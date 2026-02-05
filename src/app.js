@@ -67,6 +67,7 @@ buttons.forEach((btn) => {
 // Task 1.1
 /////////////////////////////////////////////////////
 function task1_1() {
+  console.log("==================== Task 1.1 ====================");
   console.log("block sy uper wala console = " + name1);
   {
     var name1 = "Ammad";
@@ -130,8 +131,40 @@ function task1_1() {
 // Task 1.2
 /////////////////////////////////////////////////////
 function task1_2() {
-  
+  console.log("==================== Task 1.2 ====================");
+  {
+    var varDeclare = "Lahore";
+    console.log("Variable declared with var Output =>>> " + varDeclare);
+    var varDeclare = "Karachi";
+    console.log("After redeclared " + varDeclare);
+  }
+  {
+    try {
+      eval(`
+      let myName = "Ammad";
+      console.log("variable declared first-time using let Output = " + myName);
+      let myName = "Ammad Raza";
+      console.log("Variable redeclared with the same name 'myName' let see waht happen " +myName,
+      );
+    `);
+    } catch (e) {
+      console.log("error msg =>>> " + e.message);
+    }
+  }
+  {
+    try {
+      const constVariable = "Declared first time";
+      console.log(constVariable);
+      eval(`
+        let indirect = {constVariable: modifying a const value indirectly in (object or array)};
+        console.log(indirect.constVariable);
+        `);
+    } catch (e) {
+      console.log(`The const variable cannot be redeclared even indirectly: ${e.message}`)
+    }
+  }
 }
+
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
