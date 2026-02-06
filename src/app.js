@@ -146,7 +146,7 @@ function task1_2() {
       let myName = "Ammad Raza";
       console.log("Variable redeclared with the same name 'myName' let see waht happen " +myName,
       );
-    `);
+      `);
     } catch (e) {
       console.log("error msg =>>> " + e.message);
     }
@@ -160,15 +160,42 @@ function task1_2() {
         console.log(indirect.constVariable);
         `);
     } catch (e) {
-      console.log(`The const variable cannot be redeclared even indirectly: ${e.message}`)
+      console.log(
+        `The const variable cannot be redeclared even indirectly: ${e.message}`,
+      );
     }
   }
-}
+};
+/////////////////////////////////////////////////////
+// Task 1.3
+/////////////////////////////////////////////////////
+function task1_3() {
+  console.log("==================== Task 1.3 – Loop Behavior Test ====================");
+  let loopVar = [1, 2, 3, 4, 5];
 
-/////////////////////////////////////////////////////
-// Task 1.2
-/////////////////////////////////////////////////////
-function task1_3() {}
+  //("======== Using VAR ========");
+  for (var a = 0; a < loopVar.length; a++) {
+      setTimeout((a) => {
+        console.log(`Current iteration count in VAR is =>>> ${loopVar[a]}`);
+      }, 100, a);
+  }
+  //("======== Using LET ========");
+  for (let j = 0; j < loopVar.length; j++) {
+    setTimeout(() => {
+      console.log("Current iteration count in LET is =>>> " + loopVar[j]);
+    }, 200);
+  }
+  //("======== Using CONST ========");
+  for (const k of loopVar) {
+    setTimeout(() => {
+      console.log("Current iteration count in CONST is =>>> " + k);
+    }, 300);
+  }
+  //("======== Final log after ALL delays ========");
+  setTimeout(() => {
+    console.log("All delay log completed")
+  }, 400);
+}
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
