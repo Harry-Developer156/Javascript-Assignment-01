@@ -165,19 +165,25 @@ function task1_2() {
       );
     }
   }
-};
+}
 /////////////////////////////////////////////////////
 // Task 1.3
 /////////////////////////////////////////////////////
 function task1_3() {
-  console.log("==================== Task 1.3 – Loop Behavior Test ====================");
+  console.log(
+    "==================== Task 1.3 – Loop Behavior Test ====================",
+  );
   let loopVar = [1, 2, 3, 4, 5];
 
   //("======== Using VAR ========");
   for (var a = 0; a < loopVar.length; a++) {
-      setTimeout((a) => {
+    setTimeout(
+      (a) => {
         console.log(`Current iteration count in VAR is =>>> ${loopVar[a]}`);
-      }, 100, a);
+      },
+      100,
+      a,
+    );
   }
   //("======== Using LET ========");
   for (let j = 0; j < loopVar.length; j++) {
@@ -193,13 +199,24 @@ function task1_3() {
   }
   //("======== Final log after ALL delays ========");
   setTimeout(() => {
-    console.log("All delay log completed")
+    console.log("All delay log completed");
   }, 400);
 }
 /////////////////////////////////////////////////////
-// Task 1.2
+// Task 2.1
 /////////////////////////////////////////////////////
-function task2_1() {}
+function task2_1() {
+  console.log(
+    "==================== Task 2.1 – Dynamic Message Generator ====================",
+  );
+  function dmg(userName, course, percentage) {
+    return `Hi ${userName} \n You have successfully completed ${percentage} of the course: ${course} \n Keep going - you are doing great!`;
+  }
+  let name = prompt("Enter your name");
+  let course = prompt("Enter course name");
+  let percents = +prompt("Enter completion percentage");
+  console.log(dmg(name, course, percents));
+}
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
