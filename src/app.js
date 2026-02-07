@@ -298,9 +298,19 @@ function task3_2() {
   console.log(`Implicit return ${implicit}`);
 }
 /////////////////////////////////////////////////////
-// Task 1.2
+// Task 3.3
 /////////////////////////////////////////////////////
-function task3_3() {}
+function task3_3() {
+  console.clear()
+  console.log("==================== Task 3.3 – Arrow Functions in Callbacks ====================")
+  setTimeout(function () {
+    console.log("Callback using normanl function executed")    
+  }, 1000);
+
+  setTimeout(() => {
+    console.log("Callback using arrow function executed")
+  }, 2000);
+}
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
