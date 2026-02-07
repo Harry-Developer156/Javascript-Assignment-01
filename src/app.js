@@ -255,9 +255,29 @@ function task2_2() {
   gradingLogic();
 }
 /////////////////////////////////////////////////////
-// Task 1.2
+// Task 3.1
 /////////////////////////////////////////////////////
-function task3_1() {}
+function task3_1() {
+  console.clear();
+  console.log(
+    "==================== Task 3.1 – Arrow vs Regular Function ====================",
+  );
+  const object = {
+    headOfState: "Imran Khan",
+    regular: function () {
+      console.log(
+        `System Log =>>> Current Head of State detected: ${this.headOfState} (Verified via object context)`,
+      );
+    },
+    arrow: () => {
+      console.log(
+        `Arrow Function Alert this object se bind nahi hua, is liye headOfState = ${this.headOfState}`,
+      );
+    },
+  };
+  object.regular();
+  object.arrow();
+}
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
