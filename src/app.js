@@ -281,7 +281,22 @@ function task3_1() {
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
-function task3_2() {}
+function task3_2() {
+  console.clear();
+  console.log(
+    "==================== Task 3.2 – Implicit vs Explicit Return ====================",
+  );
+  const golmaal = ["Gopal", "Madhav", "Lucky", "Laxman"];
+  // Explicit jb use hota hai jb function bara hoo iss mei curly braket aur return ka keyword dono use hoty hai
+  let explicit = golmaal.map((character01) => {
+    return character01.toUpperCase();
+  });
+  console.log(`Explicit return ${explicit}`);
+
+  // Using Implicit jb use hota hai jb function ka return ek hi line mei hoo naa tw return ka keyword likhna prta na curly braket use krny prty 
+  let implicit = golmaal.map((character02) => character02.toLowerCase());
+  console.log(`Implicit return ${implicit}`);
+}
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
