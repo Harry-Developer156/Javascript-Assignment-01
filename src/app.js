@@ -67,7 +67,7 @@ buttons.forEach((btn) => {
 // Task 1.1
 /////////////////////////////////////////////////////
 function task1_1() {
-  console.clear()
+  console.clear();
   console.log("==================== Task 1.1 ====================");
   console.log("block sy uper wala console = " + name1);
   {
@@ -132,7 +132,7 @@ function task1_1() {
 // Task 1.2
 /////////////////////////////////////////////////////
 function task1_2() {
-  console.clear()
+  console.clear();
   console.log("==================== Task 1.2 ====================");
   {
     var varDeclare = "Lahore";
@@ -172,7 +172,7 @@ function task1_2() {
 // Task 1.3
 /////////////////////////////////////////////////////
 function task1_3() {
-  console.clear()
+  console.clear();
   console.log(
     "==================== Task 1.3 – Loop Behavior Test ====================",
   );
@@ -209,7 +209,7 @@ function task1_3() {
 // Task 2.1
 /////////////////////////////////////////////////////
 function task2_1() {
-  console.clear()
+  console.clear();
   console.log(
     "==================== Task 2.1 – Dynamic Message Generator ====================",
   );
@@ -225,7 +225,7 @@ function task2_1() {
 // Task 2.2
 /////////////////////////////////////////////////////
 function task2_2() {
-  console.clear()
+  console.clear();
   console.log(
     "==================== Task 2.2 – Conditional Templates ====================",
   );
