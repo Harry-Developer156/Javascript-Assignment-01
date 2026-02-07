@@ -218,9 +218,37 @@ function task2_1() {
   console.log(dmg(name, course, percents));
 }
 /////////////////////////////////////////////////////
-// Task 1.2
+// Task 2.2
 /////////////////////////////////////////////////////
-function task2_2() {}
+function task2_2() {
+  console.log(
+    "==================== Task 2.2 – Conditional Templates ====================",
+  );
+  function gradingLogic() {
+    const studentname = prompt("Enter your name");
+    const score = +prompt("Enter your score");
+    const status = score >= 60 ? "PASS" : "FAIL";
+    let grade;
+    let massage = `Congratulations! ${studentname} Keep pushing forward`;
+    if (isNaN(score) || score < 0 || score > 100) {
+      console.log("Something went wrong, please enter a valid number");
+      return;
+    } else if (score >= 90) {
+      grade = "A";
+    } else if (score >= 75) {
+      grade = "B";
+    } else if (score >= 60) {
+      grade = "C";
+    } else {
+      grade = "No Grade";
+      massage = "Needs improvement. Don't give up";
+    }
+    console.log(
+      `Student Name: ${studentname} \n Score: ${score} \n\n Status: ${status} \n Grade: ${grade} \n\n ${massage}`,
+    );
+  }
+  gradingLogic();
+}
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
