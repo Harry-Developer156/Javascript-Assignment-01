@@ -301,20 +301,62 @@ function task3_2() {
 // Task 3.3
 /////////////////////////////////////////////////////
 function task3_3() {
-  console.clear()
-  console.log("==================== Task 3.3 – Arrow Functions in Callbacks ====================")
+  console.clear();
+  console.log(
+    "==================== Task 3.3 – Arrow Functions in Callbacks ====================",
+  );
   setTimeout(function () {
-    console.log("Callback using normanl function executed")    
+    console.log("Callback using normanl function executed");
   }, 1000);
 
   setTimeout(() => {
-    console.log("Callback using arrow function executed")
+    console.log("Callback using arrow function executed");
   }, 2000);
 }
 /////////////////////////////////////////////////////
-// Task 1.2
+// Task 4.1
 /////////////////////////////////////////////////////
-function task4_1() {}
+function task4_1() {
+  console.clear();
+  console.log(
+    "==================== Task 4.1 – Manual Iteration ====================",
+  );
+  // const ka use taky number ka ye jo object hai iska reference change na ho sirf andr ka data use ho
+  // number = bank locker
+  // is locker se paisay (numbers) nikalne ka rule hum khud bana rahe hain
+  const number = {
+    start: 1, // locker mein pehla dollar
+    end: 5, // locker ka last dollar
+    // Symbol.iterator = locker ka UNIQUE lock
+    // JS sirf isi lock ko pehchan kar locker kholta hai
+    [Symbol.iterator]() {
+      let current = this.start; // cashier ko bataya: pehla dollar kahan se shuru
+      let last = this.end; // cashier ko bataya: paisay kahan tak dene hain
+      return {
+        // next() = cashier har dafa ek dollar nikal ke deta hai
+        next() {
+          if (current <= last) {
+            return {
+              value: current++, // ek dollar do, phir agla ready karo
+              done: false, // abhi account mei dollar baki hai
+            };
+          }
+          // jab locker khali ho jaye
+          else {
+            return {
+              done: true, // cashier: bass bhaeee dollar khatam
+            };
+          }
+        },
+      };
+    },
+  };
+  // for..of = bank ka bhooka customer
+  // ye khud hi cashier ko baar baar "next()" bolta rehta hai
+  for (const value of number) {
+    console.log(`Iterated value = ${value}`);
+  }
+}
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
