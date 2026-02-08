@@ -384,9 +384,16 @@ function task4_2() {
   };
 }
 /////////////////////////////////////////////////////
-// Task 1.2
+// Task 4.3
 /////////////////////////////////////////////////////
-function task4_3() {}
+function task4_3() {
+  console.clear();
+  console.log("==================== Task 4.3 : Real-World Iterator Usage ====================");
+  const taskarr = ["Fajar", "Zuhr", "Asr", "Maghreeb", "Esha"];
+  for (const store of taskarr) {
+    console.log(`Result of task 4.3 is =>>> ${store}`);
+  };
+};
 /////////////////////////////////////////////////////
 // Run Final Chalenge
 /////////////////////////////////////////////////////
