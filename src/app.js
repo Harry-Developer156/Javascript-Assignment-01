@@ -293,7 +293,7 @@ function task3_2() {
   });
   console.log(`Explicit return ${explicit}`);
 
-  // Using Implicit jb use hota hai jb function ka return ek hi line mei hoo naa tw return ka keyword likhna prta na curly braket use krny prty 
+  // Using Implicit jb use hota hai jb function ka return ek hi line mei hoo naa tw return ka keyword likhna prta na curly braket use krny prty
   let implicit = golmaal.map((character02) => character02.toLowerCase());
   console.log(`Implicit return ${implicit}`);
 }
@@ -358,9 +358,31 @@ function task4_1() {
   }
 }
 /////////////////////////////////////////////////////
-// Task 1.2
+// Task 4.2
 /////////////////////////////////////////////////////
-function task4_2() {}
+function task4_2() {
+  console.clear();
+  console.log("==================== Task 4.2 – Comparing Loops ====================");
+  const cities = ["karachi", "lahore", "Islamabad", "Quetta"];
+
+  console.log("===== Using for loop =====");
+  // for loop numeric index ke sath chalti hai, mostly arrays ke liye
+  for (let i = 0; i < cities.length; i++) {
+    console.log(`Index ${i} = ${cities[i]}`);
+  };
+
+  console.log("===== Using for..in loop =====");
+  // for..in loop object ke keys ko iterate karta hai
+  for (const j in cities) {
+    console.log(`Index ${j} = ${cities[j]}`);
+  };
+
+  console.log("===== Using for..of loop =====");
+  // for..of loop iterable objects ke values ko iterate karta hai
+  for (const k of cities) {
+    console.log(`Value = ${k}`);
+  };
+}
 /////////////////////////////////////////////////////
 // Task 1.2
 /////////////////////////////////////////////////////
