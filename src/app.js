@@ -53,7 +53,7 @@ buttons.forEach((btn) => {
         break;
       ///////////////////////////////////////////
       case "final_challenge":
-        finalChallenge();
+        final_challenge();
         break;
 
       default:
@@ -362,39 +362,173 @@ function task4_1() {
 /////////////////////////////////////////////////////
 function task4_2() {
   console.clear();
-  console.log("==================== Task 4.2 – Comparing Loops ====================");
+  console.log(
+    "==================== Task 4.2 – Comparing Loops ====================",
+  );
   const cities = ["karachi", "lahore", "Islamabad", "Quetta"];
 
   console.log("===== Using for loop =====");
   // for loop numeric index ke sath chalti hai, mostly arrays ke liye
   for (let i = 0; i < cities.length; i++) {
     console.log(`Index ${i} = ${cities[i]}`);
-  };
+  }
 
   console.log("===== Using for..in loop =====");
   // for..in loop object ke keys ko iterate karta hai
   for (const j in cities) {
     console.log(`Index ${j} = ${cities[j]}`);
-  };
+  }
 
   console.log("===== Using for..of loop =====");
   // for..of loop iterable objects ke values ko iterate karta hai
   for (const k of cities) {
     console.log(`Value = ${k}`);
-  };
+  }
 }
 /////////////////////////////////////////////////////
 // Task 4.3
 /////////////////////////////////////////////////////
 function task4_3() {
   console.clear();
-  console.log("==================== Task 4.3 : Real-World Iterator Usage ====================");
+  console.log(
+    "==================== Task 4.3 : Real-World Iterator Usage ====================",
+  );
   const taskarr = ["Fajar", "Zuhr", "Asr", "Maghreeb", "Esha"];
   for (const store of taskarr) {
     console.log(`Result of task 4.3 is =>>> ${store}`);
-  };
-};
+  }
+}
 /////////////////////////////////////////////////////
 // Run Final Chalenge
 /////////////////////////////////////////////////////
-function final_challenge() {}
+function final_challenge() {
+  console.clear();
+  console.log("==================== Task Final Challenge ====================");
+
+  ///////// BANK SCENARIOS /////////////
+  const bankScenarios = {
+    accounts: [
+      // Current account → var (old rules, flexible)
+      { type: "var", name: "current", value: 40 },
+
+      // Saving account → let (modern rules)
+      { type: "let", name: "saving", value: 60 },
+
+      // Fixed deposit → const (strict rules)
+      { type: "const", name: "fixed", value: { mode: "dark" } },
+    ],
+
+    // Bank me customer token le kar counter par aata hai
+    [Symbol.iterator]() {
+      let tokenNum = 0; // Token counter
+      const custList = this.accounts; // Customer list
+
+      return {
+        next() {
+          // ye cashier hai cash nikal nikal kr dyna iska kaam hai
+          if (tokenNum < custList.length) {
+            return { value: custList[tokenNum++], done: false };
+          }
+          return { done: true }; // sb csutomer ho chuky
+        },
+      };
+    },
+  };
+
+  // Ye function bank inspector ka kaam kry ga
+  const Inspector = (item) => {
+    let report = "";
+
+    try {
+      /////// Current account ////////
+      if (item.type === "var") {
+        console.log(`Inspecting CURRENT account (var)`);
+        var current = item.value; // initial balance
+        var current = 99; // same naam se dobara account (allowed)
+        current += 1; // balance change
+
+        report = `
+Type: var
+Name: ${item.name}
+Initial Value: ${item.value}
+Re-declaration: Allowed
+Re-assignment: Allowed
+Final Runtime Value: ${current}
+`;
+      }
+      /////// Saving account ///////
+      if (item.type === "let") {
+        console.log(`Inspecting SAVING account (let)`);
+        let saving = item.value; // Initial value
+
+        try {
+          // same naam se dobara account kholnay ki koshish
+          let saving = 10; // Blocked
+        } catch (e) {}
+
+        saving++; // balance change hosakta hai
+
+        report = `
+Type: let
+Name: ${item.name}
+Initial Value: ${item.value}
+Re-declaration: Blocked
+Re-assignment: Allowed
+Final Runtime Value: ${saving}
+`;
+      }
+      //////// Fixed account //////
+      if (item.type === "const") {
+        console.log(`Inspecting FIXED DEPOSIT (const)`);
+        const fixed = item.value;
+        let reassignmentResult = "Blocked";
+
+        fixed.mode = "light"; // indirect modification allowed
+
+        // poora locker change karna allowed nahi
+        try {
+          fixed = {};
+        } catch (e) {
+          reassignmentResult = "Blocked (Runtime Error)";
+        }
+
+        report = `
+Type: const
+Name: ${item.name}
+Initial Value: ${JSON.stringify(item.value)}
+Indirect Modification: Allowed
+Direct Re-assignment: ${reassignmentResult}
+Final Runtime Value: ${JSON.stringify(fixed)}
+`;
+      }
+    } catch (error) {
+      report = `
+Type: ${item.type}
+Unexpected runtime failure encountered
+`;
+    }
+
+    console.log(report);
+  };
+
+  // for..of =>>> bhooky nadiedy customer line me kharay hain
+  for (const variable of bankScenarios) {
+    Inspector(variable);
+  }
+
+  // ===== Reflection Logs (Runtime-based observations ONLY) =====
+
+  console.log("====== Reflection Logs ======");
+
+  console.log(`
+    1) var yani stray Dogs Kahin bhi ghoom sakta hai function/global-scope Kabhi bhi mood change re-declare + re-assign ho jata hai Pata nahi kab kis ko kaat le bugs create karta hai
+    
+    2) let yani German Shepherd wafadar aur bharosemand Sirf apni boundary mein rehta hai (block scope) Dobara naam nahi le sakte (no redeclare) Value change ho sakti hai, lekin control mein
+
+    3) const yani Alpha Wolf leader position fix hai (reference), lekin uski strategy aur moves (object properties) pack ke hisaab se badal sakti hain
+
+    4) symbol.iterator Symbol => locker ka lock iterator function => key.
+
+    
+    `);
+}
